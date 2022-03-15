@@ -5,26 +5,30 @@ void main(List<String> arguments) {
   print('Выберите действие:');
   print('   1. Проверка на парное число');
   print('   2. Угадай число от 1 до 10');
+  print('   3. Работа со списками');
 
+  print('   0. Выход');
   int numberFromConsole = parseline(stdin.readLineSync() ?? "");
 
-  if (numberFromConsole == 0) {
+  if (numberFromConsole == -1) {
     print("Вы ввели не число :-(");
   } else {
     switch (numberFromConsole) {
+      case 0:
+        print('До встречи');
+        break;
       case 1:
         print('Введите число:');
-
         pairedNumbers();
-
         break;
       case 2:
         print('Я загадал целое число от 1 до 10. Попробуй угадать:');
-
         guessTheNumber();
-
         break;
-
+      case 3:
+        print('Введите числа через запятую:');
+        workWithLists();
+        break;
       default:
         print('Вы ввели число больше чем предложенные варианты');
     }
@@ -39,7 +43,7 @@ int parseline(String line) {
   if (line == 'exit') {
     answer = 999666999;
   } else if (numberfromconsole == null) {
-    answer = 0;
+    answer = -1;
   } else {
     answer = numberfromconsole;
   }
@@ -51,7 +55,7 @@ int parseline(String line) {
 void pairedNumbers() {
   String answer = '';
   int numberToCheck = parseline(stdin.readLineSync() ?? "");
-  
+
   if (numberToCheck % 2 == 0) {
     answer = 'парное';
   } else {
@@ -85,4 +89,12 @@ void guessTheNumber() {
     }
     attempt++;
   }
+}
+
+//работа со списками
+void workWithLists() {
+  final lineToCheck = stdin.readLineSync() ?? "";
+  List listFromConsole = (lineToCheck.split(','));
+
+  
 }
