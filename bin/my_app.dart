@@ -26,8 +26,7 @@ void main(List<String> arguments) {
         guessTheNumber();
         break;
       case 3:
-        print('Введите числа через запятую:');
-        workWithLists();
+          workWithLists();
         break;
       default:
         print('Вы ввели число больше чем предложенные варианты');
@@ -93,8 +92,16 @@ void guessTheNumber() {
 
 //работа со списками
 void workWithLists() {
-  final lineToCheck = stdin.readLineSync() ?? "";
-  List listFromConsole = (lineToCheck.split(','));
+  print('Введите числа через запятую для первого списка:');
+  final stringOfNumbers1 = stdin.readLineSync() ?? "";
+  List listFromConsole1 = (stringOfNumbers1.split(','));
 
-  
+  print('Введите числа через запятую для второго списка:');
+  final stringOfNumbers2 = stdin.readLineSync() ?? "";
+  List listFromConsole2 = (stringOfNumbers2.split(','));
+
+  print('''Что необходимо сделать с введенными списками?
+  1. Объединить
+  2. Показать различие
+  3. Показать общие элементы''');
 }
