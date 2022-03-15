@@ -6,9 +6,6 @@ void main(List<String> arguments) {
   print('   1. Проверка на парное число');
   print('   2. Угадай число от 1 до 10');
 
-  Random random = new Random();
-  int randomNumber = random.nextInt(10) + 1;
-
   int numberFromConsole = parseline(stdin.readLineSync() ?? "");
 
   if (numberFromConsole == 0) {
@@ -18,14 +15,14 @@ void main(List<String> arguments) {
       case 1:
         print('Введите число:');
 
-        pairedNumbers(parseline(stdin.readLineSync() ?? ""));
+        pairedNumbers();
 
         break;
       case 2:
         print('Я загадал целое число от 1 до 10. Попробуй угадать:');
-     
+
         guessTheNumber();
-       
+
         break;
 
       default:
@@ -51,8 +48,10 @@ int parseline(String line) {
 }
 
 //проверка числа на парность
-void pairedNumbers(int numberToCheck) {
+void pairedNumbers() {
   String answer = '';
+  int numberToCheck = parseline(stdin.readLineSync() ?? "");
+  
   if (numberToCheck % 2 == 0) {
     answer = 'парное';
   } else {
@@ -72,7 +71,9 @@ void guessTheNumber() {
     int numberToCheck = parseline(stdin.readLineSync() ?? "");
 
     String res = '';
-    if (numberToCheck > randomNumber) {
+    if (numberToCheck == 999666999) {
+      exitFrom = false;
+    } else if (numberToCheck > randomNumber) {
       print(
           'Ваше число больше загаданного. Попробуйте еще раз или напишите exit');
     } else if (numberToCheck < randomNumber) {
@@ -80,8 +81,6 @@ void guessTheNumber() {
           'Ваше число меньше загаданного. Попробуйте еще раз или напишите exit');
     } else if (numberToCheck == randomNumber) {
       print('Поздравляю вы угадали число $numberToCheck с $attempt попытки');
-      exitFrom = false;
-    } else if (numberToCheck == 999666999) {
       exitFrom = false;
     }
     attempt++;
