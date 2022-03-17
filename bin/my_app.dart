@@ -95,12 +95,7 @@ void guessTheNumber() {
 
 //работа со списками
 void workWithLists() {
-  /* print('''Что необходимо сделать с введенными списками?
-  1. Объединить
-  2. Показать различные элементы
-  3. Показать общие элементы'''); */
-
-  //int userChoice = parseline(stdin.readLineSync() ?? '');
+  
   print('Введите числа через запятую для создания массива:');
   final stringOfNumbers1 = stdin.readLineSync() ?? '';
   List listFromConsole1 = (stringOfNumbers1.split(','));
@@ -110,16 +105,10 @@ void workWithLists() {
     exit(1);
   }
 
-  int lenghtOfList = listFromConsole1.length;
-
-  final revList = listFromConsole1.reversed;
-
-  final numberOfUnique = listFromConsole1.toSet().toList().length;
-
   print('''
-  Длина массива: $lenghtOfList, 
-  Массив наоборот: $revList,
-  Количество уникальных элементов: $numberOfUnique
+  Длина массива: ${listFromConsole1.length}, 
+  Массив наоборот: ${listFromConsole1.reversed},
+  Количество уникальных элементов: ${listFromConsole1.toSet().toList().length}
 
   ''');
   
