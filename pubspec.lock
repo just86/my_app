@@ -323,6 +323,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  windows1251:
+    dependency: "direct main"
+    description:
+      name: windows1251
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   yaml:
     dependency: transitive
     description:

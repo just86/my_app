@@ -1,13 +1,16 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:core';
+//import 'dart:convert';
+//import 'package:windows1251/windows1251.dart';
 
 void main(List<String> arguments) {
-  print('Выберите действие:');
-  print('   1. Проверка на парное число');
-  print('   2. Угадай число от 1 до 10');
-  print('   3. Работа со списками');
+  print('''Выберите действие:
+     1. Проверка на парное число
+     2. Угадай число от 1 до 10
+     3. Работа со списками
 
-  print('   0. Выход');
+     0. Выход''');
   int numberFromConsole = parseline(stdin.readLineSync() ?? "");
 
   if (numberFromConsole == -1) {
@@ -26,7 +29,7 @@ void main(List<String> arguments) {
         guessTheNumber();
         break;
       case 3:
-          workWithLists();
+        workWithLists();
         break;
       default:
         print('Вы ввели число больше чем предложенные варианты');
@@ -92,16 +95,32 @@ void guessTheNumber() {
 
 //работа со списками
 void workWithLists() {
-  print('Введите числа через запятую для первого списка:');
-  final stringOfNumbers1 = stdin.readLineSync() ?? "";
+  /* print('''Что необходимо сделать с введенными списками?
+  1. Объединить
+  2. Показать различные элементы
+  3. Показать общие элементы'''); */
+
+  //int userChoice = parseline(stdin.readLineSync() ?? '');
+  print('Введите числа через запятую для создания массива:');
+  final stringOfNumbers1 = stdin.readLineSync() ?? '';
   List listFromConsole1 = (stringOfNumbers1.split(','));
 
-  print('Введите числа через запятую для второго списка:');
-  final stringOfNumbers2 = stdin.readLineSync() ?? "";
-  List listFromConsole2 = (stringOfNumbers2.split(','));
+  if (listFromConsole1.length == 1 && listFromConsole1.first == '') { //может быть первый элемент пустой
+    print('Вы не ввели элементы для списка. Продолжение невозможно');
+    exit(1);
+  }
 
-  print('''Что необходимо сделать с введенными списками?
-  1. Объединить
-  2. Показать различие
-  3. Показать общие элементы''');
+  int lenghtOfList = listFromConsole1.length;
+
+  final revList = listFromConsole1.reversed;
+
+  final numberOfUnique = listFromConsole1.toSet().toList().length;
+
+  print('''
+  Длина массива: $lenghtOfList, 
+  Массив наоборот: $revList,
+  Количество уникальных элементов: $numberOfUnique
+
+  ''');
+  
 }
